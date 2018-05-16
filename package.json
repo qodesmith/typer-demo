@@ -1,0 +1,52 @@
+{
+  "name": "typer-demo",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "email": "",
+  "browserslist": [
+    ">0.25%",
+    "not ie 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta",
+    "@babel/preset-env": "^7.0.0-beta",
+    "@babel/preset-react": "^7.0.0-beta",
+    "autoprefixer": "^8",
+    "babel-loader": "^8.0.0-beta",
+    "clean-webpack-plugin": "^0",
+    "cross-env": "^5",
+    "css-loader": "^0",
+    "css-mqpacker": "^6",
+    "dotenv": "latest",
+    "glob-all": "latest",
+    "html-webpack-plugin": "^3",
+    "mini-css-extract-plugin": "^0",
+    "node-sass": "^4",
+    "npm-run-all": "latest",
+    "postcss": "^6",
+    "postcss-combine-duplicated-selectors": "^5",
+    "postcss-discard-comments": "^2",
+    "postcss-loader": "^2",
+    "purgecss-webpack-plugin": "^1",
+    "purgecss-whitelister": "latest",
+    "react": "^16",
+    "react-dom": "^16",
+    "react-redux": "^5",
+    "redux": "^3",
+    "sass-loader": "^6",
+    "sassyons": "^1",
+    "typer-js": "^3.1.0",
+    "webpack": "^4",
+    "webpack-cli": "^2",
+    "webpack-dev-server": "^3"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --mode production --env.prod",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --env.dev --open --progress"
+  }
+}

@@ -1,0 +1,1 @@
+export const demoItemChange = demoItem => ({ type: 'DEMO_ITEM_CHANGE', demoItem })
