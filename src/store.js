@@ -1,9 +1,10 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import appReducer from 'reducers/appReducer'
+import itemChanger from 'middleware/itemChanger'
 
 
 // Add all your custom middleware to this array.
-const middlewareList = []
+const middlewareList = [itemChanger]
 
 // Add all your reducers to this object.
 const rootReducer = combineReducers({ app: appReducer })

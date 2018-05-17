@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Controls from 'components/Controls'
+import typer from 'typer-js'
 
 
 class App extends Component {
@@ -9,8 +10,10 @@ class App extends Component {
     this.state = { error: null }
   }
 
-  componentWillMount() {
-    document.body.className = 'bg-black fw1 white df flex-col'
+  componentDidMount() {
+    typer('#example .container')
+      .line('Hello world!')
+      .line('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, dolore, ad. Iusto numquam harum autem praesentium at, eum, neque beatae fugit officia aut doloribus eaque explicabo et illo! Quisquam, quaerat!')
   }
 
   // React error handling!
@@ -38,6 +41,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ app }) => ({ demoItem: app.demoItem })
-
-export default connect(mapStateToProps)(App)
+export default App

@@ -15,14 +15,19 @@ import App from 'components/App'
 import store from './store'
 
 
-// Create a single element for our app to live along with a demo container.
+// Create the markup for Typer and our React app.
 const demoCls = 'w-100 ph8 pv7 flex-grow-1 df flex-col'
 const appCls = 'w-100 pa3'
-const paneCls = 'bg-white-20 radius-0-5 pa3'
+const paneCls = 'bg-white-20 radius-0-5 pa3 df justify-center align-items-center'
+document.body.className = 'bg-black fw1 white df flex-col'
 document.body.innerHTML = `
   <div id="typer-demo-container" class="${demoCls}">
-    <div id="explanation" class="${paneCls} flex-grow-1 mb3">Explanation</div>
-    <div id="example" class="${paneCls} flex-grow-2">Example</div>
+    <div id="explanation" class="${paneCls} flex-grow-1 mb3">
+      <div class="container"></div>
+    </div>
+    <div id="example" class="${paneCls} flex-grow-2">
+      <div class="container"></div>
+    </div>
   </div>
   <div id="app" class="${appCls}"></div>
 `;
