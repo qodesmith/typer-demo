@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    document.body.className = 'bg-black-80 fw1 white-80 df flex-col'
+    document.body.className = 'bg-black fw1 white df flex-col'
   }
 
   // React error handling!

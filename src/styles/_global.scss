@@ -29,9 +29,14 @@ body {
   width: 2.5rem;
   font-size: 1rem;
   border: 1px solid;
+  transition: background .1s;
+
+  &:hover {
+    @extend .bg-white-20;
+  }
 
   &:active {
-    @extend .bg-white-15;
+    @extend .bg-white-40;
   }
 }
 
