@@ -39,7 +39,7 @@
     "react-redux": "^5",
     "redux": "^3",
     "sass-loader": "^6",
-    "sassyons": "^1",
+    "sassyons": "^1.8.0",
     "typer-js": "^3.1.0",
     "webpack": "^4",
     "webpack-cli": "^2",
