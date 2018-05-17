@@ -16,8 +16,12 @@ import store from './store'
 
 
 // Create a single element for our app to live.
-console.log('Loaded, bro.')
-document.body.innerHTML = '<div id="app"></div>'
+const demoCls = 'w-100 pa3 bg-blue flex-grow-1'
+const appCls = 'w-100 pa3'
+document.body.innerHTML = [
+  `<div id="typer-demo-container" class="${demoCls}">Typer demo container</div>`,
+  `<div id="app" class="${appCls}"></div>`
+].join('')
 
 ReactDOM.render(
   <Provider store={store}>

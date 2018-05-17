@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  Matrix
-} from 'components/TyperDemoViews'
+import Controls from 'components/Controls'
 
-const views = {
-  Matrix
-}
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +10,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    document.body.className = 'bg-black-80 fw1 white-80'
+    document.body.className = 'bg-black-80 fw1 white-80 df flex-col'
   }
 
   // React error handling!
@@ -39,9 +34,7 @@ class App extends Component {
       )
     }
 
-    const View = views[this.props.demoItem]
-
-    return <View />
+    return <Controls />
   }
 }
 

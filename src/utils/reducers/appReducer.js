@@ -1,11 +1,14 @@
+import { menuItems } from 'utils/constants'
+
 const initialState = {
-  demoItem: 'Matrix'
+  demoItem: menuItems[0],
+  playing: false
 }
 
 const appReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case 'DEMO_ITEM_CHANGE':
-      return { ...state, demoItem: action.demoItem }
+      return { ...state, demoItem: menuItems[action.index] }
     default:
       return state
   }
