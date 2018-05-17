@@ -15,13 +15,17 @@ import App from 'components/App'
 import store from './store'
 
 
-// Create a single element for our app to live.
-const demoCls = 'w-100 pa3 bg-blue flex-grow-1'
+// Create a single element for our app to live along with a demo container.
+const demoCls = 'w-100 ph8 pv7 flex-grow-1 df flex-col'
 const appCls = 'w-100 pa3'
-document.body.innerHTML = [
-  `<div id="typer-demo-container" class="${demoCls}">Typer demo container</div>`,
-  `<div id="app" class="${appCls}"></div>`
-].join('')
+const paneCls = 'bg-white-20 radius-0-5 pa3'
+document.body.innerHTML = `
+  <div id="typer-demo-container" class="${demoCls}">
+    <div id="explanation" class="${paneCls} flex-grow-1 mb3">Explanation</div>
+    <div id="example" class="${paneCls} flex-grow-2">Example</div>
+  </div>
+  <div id="app" class="${appCls}"></div>
+`;
 
 ReactDOM.render(
   <Provider store={store}>

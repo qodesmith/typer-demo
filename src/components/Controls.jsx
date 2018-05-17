@@ -9,41 +9,38 @@ const itemCls = 'item tc radius-0-5 pa3 pointer'
 const activeCls = 'bg-lime black fw4'
 const cntrlCls = 'pointer ba-1px control'
 
-const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }) => {
-  console.log(index)
-  return (
-    <Fragment>
+const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }) => (
+  <Fragment>
 
-      {/* MENU ITEMS */}
-      <div className='df no-select mb4 white-70'>
-        {
-          menuItems.map((item, i) => (
-            <div
-              key={item}
-              style={style}
-              onClick={() => changeItem(i, index)}
-              className={item === demoItem ? `${itemCls} ${activeCls}` : itemCls}
-            >
-              {item}
-            </div>
-          ))
-        }
-      </div>
+    {/* MENU ITEMS */}
+    <div className='df no-select mb4 white-70'>
+      {
+        menuItems.map((item, i) => (
+          <div
+            key={item}
+            style={style}
+            onClick={() => changeItem(i, index)}
+            className={item === demoItem ? `${itemCls} ${activeCls}` : itemCls}
+          >
+            {item}
+          </div>
+        ))
+      }
+    </div>
 
-      {/* CONTROLS */}
-      <div className='tc no-select'>
-        <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
-        <button
-          className={`${cntrlCls} play-stop mh3`}
-          onClick={() => playStop(playing)}
-        >
-          {playing ? '◼' : '▶'}
-        </button>
-        <button className={`${cntrlCls} pl4`} onClick={() => next(index)}>〉</button>
-      </div>
-    </Fragment>
-  )
-}
+    {/* CONTROLS */}
+    <div className='tc no-select'>
+      <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
+      <button
+        className={`${cntrlCls} play-stop mh3`}
+        onClick={() => playStop(playing)}
+      >
+        {playing ? '◼' : '▶'}
+      </button>
+      <button className={`${cntrlCls} pl4`} onClick={() => next(index)}>〉</button>
+    </div>
+  </Fragment>
+)
 
 const mapStateToProps = ({ app }) => ({
   demoItem: app.demoItem,
