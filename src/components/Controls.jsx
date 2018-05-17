@@ -13,6 +13,8 @@ const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }
   console.log(index)
   return (
     <Fragment>
+
+      {/* MENU ITEMS */}
       <div className='df no-select mb4 white-70'>
         {
           menuItems.map((item, i) => (
@@ -27,6 +29,8 @@ const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }
           ))
         }
       </div>
+
+      {/* CONTROLS */}
       <div className='tc no-select'>
         <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
         <button
