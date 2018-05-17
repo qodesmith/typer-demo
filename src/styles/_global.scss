@@ -17,13 +17,22 @@ body {
   font: 16px/1 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
-/*
-  React is NOT mounted here.
-  Typer will use this for all-the-things.
-*/
-#typer-demo-container {
+.item {
+  transition: background .2s, color .2s;
 }
 
-// React is mounted to this element.
-#app {
+.control {
+  background: transparent;
+  color: inherit;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1rem;
+  border: 1px solid;
+
+  &:active {
+    @extend .bg-white-15;
+  }
 }
+
+

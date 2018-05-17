@@ -5,19 +5,21 @@ import { demoItemChange, togglePlay } from 'actions'
 
 
 const style = { width: `calc(100% / ${menuItems.length})` }
-const itemCls = 'tc radius-0-5 pa3 pointer'
-const activeCls = 'bg-lime black b'
+const itemCls = 'item tc radius-0-5 pa3 pointer'
+const activeCls = 'bg-lime black fw4'
+const cntrlCls = 'pointer ba-1px control'
 
-const Controls = ({ demoItem, index, playing, prev, playStop, next }) => {
+const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }) => {
   console.log(index)
   return (
     <Fragment>
-      <div className='df no-select'>
+      <div className='df no-select mb4 white-70'>
         {
-          menuItems.map(item => (
+          menuItems.map((item, i) => (
             <div
               key={item}
               style={style}
+              onClick={() => changeItem(i, index)}
               className={item === demoItem ? `${itemCls} ${activeCls}` : itemCls}
             >
               {item}
@@ -26,9 +28,14 @@ const Controls = ({ demoItem, index, playing, prev, playStop, next }) => {
         }
       </div>
       <div className='tc no-select'>
-        <div className='dib' onClick={() => prev(index)}>PREV</div>
-        <div className='dib' onClick={() => playStop(playing)}>PLAY</div>
-        <div className='dib' onClick={() => next(index)}>NEXT</div>
+        <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
+        <button
+          className={`${cntrlCls} play-stop mh3`}
+          onClick={() => playStop(playing)}
+        >
+          {playing ? '◼' : '▶'}
+        </button>
+        <button className={`${cntrlCls} pl4`} onClick={() => next(index)}>〉</button>
       </div>
     </Fragment>
   )
@@ -49,6 +56,10 @@ const mapDispatchToProps = dispatch => ({
   next: index => {
     if (index === menuItems.length - 1) return
     dispatch(demoItemChange(index + 1))
+  },
+  changeItem: (newIndex, currentIndex) => {
+    if (newIndex === currentIndex) return
+    dispatch(demoItemChange(newIndex))
   }
 })
 
