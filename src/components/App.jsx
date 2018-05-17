@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Controls from 'components/Controls'
-import typer from 'typer-js'
 
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = { error: null }
-  }
-
-  componentDidMount() {
-    typer('#example .container')
-      .line('Hello world!')
-      .line('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, dolore, ad. Iusto numquam harum autem praesentium at, eum, neque beatae fugit officia aut doloribus eaque explicabo et illo! Quisquam, quaerat!')
   }
 
   // React error handling!

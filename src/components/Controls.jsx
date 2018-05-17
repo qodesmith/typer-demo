@@ -33,7 +33,7 @@ const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }
       <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
       <button
         className={`${cntrlCls} play-stop mh3`}
-        onClick={() => playStop(playing)}
+        onClick={() => playStop(playing, index)}
       >
         {playing ? '◼' : '▶'}
       </button>
@@ -50,11 +50,16 @@ const mapStateToProps = ({ app }) => ({
 
 const mapDispatchToProps = dispatch => ({
   prev: index => {
+    if (index === null) return dispatch(demoItemChange(0))
     if (!index) return
     dispatch(demoItemChange(index - 1))
   },
-  playStop: playing => dispatch(togglePlay(!playing)),
+  playStop: (playing, index) => {
+    if (index === null) dispatch(demoItemChange(0))
+    dispatch(togglePlay(!playing))
+  },
   next: index => {
+    if (index === null) return dispatch(demoItemChange(0))
     if (index === menuItems.length - 1) return
     dispatch(demoItemChange(index + 1))
   },

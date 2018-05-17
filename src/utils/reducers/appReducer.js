@@ -1,8 +1,8 @@
 import { menuItems } from 'utils/constants'
 
 const initialState = {
-  demoItem: menuItems[0],
-  index: 0,
+  demoItem: null,
+  index: null,
   playing: false
 }
 
