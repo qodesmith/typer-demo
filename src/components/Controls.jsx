@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { menuItems } from 'utils/constants'
 import { demoItemChange, togglePlay } from 'actions'
@@ -10,8 +10,7 @@ const activeCls = 'bg-lime black fw4'
 const cntrlCls = 'pointer ba-1px control'
 
 const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }) => (
-  <Fragment>
-
+  <div>
     {/* MENU ITEMS */}
     <div className='df no-select mb4 white-70'>
       {
@@ -39,7 +38,7 @@ const Controls = ({ demoItem, index, playing, prev, playStop, next, changeItem }
       </button>
       <button className={`${cntrlCls} pl4`} onClick={() => next(index)}>〉</button>
     </div>
-  </Fragment>
+  </div>
 )
 
 const mapStateToProps = ({ app }) => ({

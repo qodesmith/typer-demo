@@ -2,6 +2,9 @@ import { menuItems } from 'utils/constants'
 import typerDemo from 'tutorial/typerDemo'
 
 const kill = new Event('killTyper')
+const items = {
+  typer: typerDemo
+}
 
 const itemChanger = store => next => action => {
   next(action) // Actions get passed through by default.
@@ -15,16 +18,9 @@ const itemChanger = store => next => action => {
     .querySelectorAll('.container')
     .forEach(container => (container.innerHTML = ''))
 
-  // Get the starter content (if any) and put that in each pane.
-
-
+  // Start the demo for the particular item.
   const item = menuItems[action.index]
-  switch (item) {
-    case 'typer':
-      return typerDemo()
-    default:
-      break
-  }
+  items[item]()
 }
 
 export default itemChanger

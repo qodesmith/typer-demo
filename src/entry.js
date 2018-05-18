@@ -26,7 +26,7 @@ const demoPanes = `
   <div id="explanation" class="${paneCls} flex-grow-1 mb3">
     <div class="container lh-1-3 tc"></div>
   </div>
-  <div id="example" class="${paneCls} flex-grow-2">
+  <div id="example" class="${paneCls} flex-grow-2 mono">
     <div class="container lh-1-3 tc"></div>
   </div>
 `
