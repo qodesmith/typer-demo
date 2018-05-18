@@ -7,13 +7,15 @@ export default intro
 function intro(dispatch, demoPanes) {
   const demoContainer = document.querySelector('#typer-demo-container')
   const origCls = demoContainer.className
-  demoContainer.className = `${origCls} align-items-center justify-center lime matrix f-3em`
+  demoContainer.className = `${origCls} align-items-center justify-center lime matrix f-2em`
 
   // 1. TYPE OUT THE MATRIX SCENE.
   typer(demoContainer)
     .cursor({ block: true, blink: 'hard' })
-    .line('Follow the white rabbit.')
-    .pause(1400)
+    .line()
+    .pause(1000)
+    .continue('Follow the white rabbit.')
+    .pause(1600)
     .empty()
     .continue(['Knock', ' knock,'], 300)
     .continue([' Neo.'], 600)
@@ -56,7 +58,7 @@ function intro(dispatch, demoPanes) {
       span.style.transition = transition
     })
 
-    setTimeout(function() {
+    setTimeout(() => {
       leftAndTransform(spans, largestNum, currentTyper)
     }, 50)
   }
@@ -75,20 +77,15 @@ function intro(dispatch, demoPanes) {
       span.style.top = '60vh'
     })
 
-    return
-
-    setTimeout(function() {
+    setTimeout(() => {
       removeMatrixShowDemo()
-    }, largestNum * 1000 + 500)
+    }, largestNum * 2000)
   }
 
   // 5. START DEMO: REMOVE THE MATRIX ELEMENT, SHOW THE DEMO ELEMENTS.
   function removeMatrixShowDemo() {
-    $('.matrix').remove();
-    $('.typer-panes, .progress').addClass('show');
-
-    setTimeout(function() {
-      _this.typerJs();
-    }, 1000);
+    demoContainer.innerHTML = demoPanes
+    demoContainer.className = origCls
+    dispatch(demoItemChange(0))
   }
 }
