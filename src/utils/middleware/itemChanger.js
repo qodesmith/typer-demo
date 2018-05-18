@@ -1,3 +1,6 @@
+import { menuItems } from 'utils/constants'
+import typerDemo from 'tutorial/typerDemo'
+
 const kill = new Event('killTyper')
 
 const itemChanger = store => next => action => {
@@ -13,6 +16,15 @@ const itemChanger = store => next => action => {
     .forEach(container => (container.innerHTML = ''))
 
   // Get the starter content (if any) and put that in each pane.
+
+
+  const item = menuItems[action.index]
+  switch (item) {
+    case 'typer':
+      return typerDemo()
+    default:
+      break
+  }
 }
 
 export default itemChanger

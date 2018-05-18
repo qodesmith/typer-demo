@@ -238,7 +238,8 @@ module.exports = (env, argv) => ({
       helpers: path.resolve(__dirname, 'src/utils/helpers'),
       middleware: path.resolve(__dirname, 'src/utils/middleware'),
       reducers: path.resolve(__dirname, 'src/utils/reducers'),
-      utils: path.resolve(__dirname, 'src/utils')
+      utils: path.resolve(__dirname, 'src/utils'),
+      tutorial: path.resolve(__dirname, 'src/tutorial')
     },
 
     /*
