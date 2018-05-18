@@ -45,4 +45,18 @@ body {
   flex-basis: 0;
 }
 
+.matrix {
+  font-family: Courier, monospace;
+}
+
+.matrix-span {
+  left: 0vw;
+  top: 0vh;
+  transform: rotate(0deg);
+}
+
+.mono {
+  font-family: monospace;
+}
+
 

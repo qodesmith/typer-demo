@@ -5,7 +5,6 @@ export default typerDemo
 window.typer = typer
 
 function typerDemo() {
-  console.log('TYPER DEMO')
   typerDemoExample()
 
   typer('#explanation .container')
