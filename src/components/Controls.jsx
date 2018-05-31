@@ -52,8 +52,7 @@ class Controls extends Component {
 
     return (
       <div className={`controls-container o-${opacityNum}`}>
-        {/* MENU ITEMS */}
-        <div className='df no-select mb4 white-70'>
+        <div className='df dn-m no-select mb4 white-70'>
           {
             menuItems.map((item, i) => (
               <div
@@ -68,16 +67,20 @@ class Controls extends Component {
           }
         </div>
 
-        {/* CONTROLS */}
-        <div className='tc no-select'>
-          <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
-          <button
-            className={`${cntrlCls} play-stop mh3`}
-            onClick={() => playStop(playing)}
-          >
-            {playing ? '◼' : '▶'}
-          </button>
-          <button className={`${cntrlCls} pl4`} onClick={() => next(index)}>〉</button>
+        <div className='tc tl-m no-select df-m'>
+          <div className=''>
+            <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
+            <button
+              className={`${cntrlCls} play-stop mh3`}
+              onClick={() => playStop(playing)}
+            >
+              {playing ? '◼' : '▶'}
+            </button>
+            <button className={`${cntrlCls} pl4`} onClick={() => next(index)}>〉</button>
+          </div>
+          <div className='b dn df-m flex-grow-1 align-items-center justify-center'>
+            <span>{demoItem}</span>
+          </div>
         </div>
       </div>
     )
