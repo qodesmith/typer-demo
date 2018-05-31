@@ -28,7 +28,7 @@ const demoPanes = `
   <div id="explanation" class="${paneCls}">
     <div class="container lh-1-3 tc"></div>
   </div>
-  <div class="pane-spacer"></div>
+  <div class="pa3-d pa3-t pt3"></div>
   <div id="example" class="${paneCls} mla mono">
     <div class="container lh-1-3 tc"></div>
   </div>
@@ -36,8 +36,8 @@ const demoPanes = `
 
 document.body.className = 'bg-black fw1 white df flex-col align-items-center'
 document.body.innerHTML = `
-  <div id="typer-demo-container" class="w-100 h-100 ph8 pv7 df flex-col flex-grow-1"></div>
-  <div id="app" class="w-100 pa3"></div>
+  <div id="typer-demo-container" class="w-100 h-100 ph8-d pv6-d ph8-t pv6-t pa3 df flex-col flex-grow-1"></div>
+  <div id="app" class="w-100 pr3 pb3 pl3"></div>
 `;
 
 ReactDOM.render(
