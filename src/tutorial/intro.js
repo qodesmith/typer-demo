@@ -49,7 +49,6 @@ function intro(dispatch, demoPanes) {
       // the setTimeout time to begin the demo.
       if (topTime > largestNum) largestNum = topTime
 
-      // Easings copied from `blowUpMenu.js`.
       const xfm = `transform ${xfmTime}s cubic-bezier(.25,.46,0,1),`
       const top = `top ${topTime}s cubic-bezier(.9,-.99,1,.96),`
       const left = `left ${leftTime}s cubic-bezier(0,0,.5,1)`
@@ -58,9 +57,7 @@ function intro(dispatch, demoPanes) {
       span.style.transition = transition
     })
 
-    setTimeout(() => {
-      leftAndTransform(spans, largestNum, currentTyper)
-    }, 50)
+    setTimeout(() => leftAndTransform(spans, largestNum, currentTyper), 50)
   }
 
   // 4. EXPLOSION: APPLY CUSTOM LEFT & TRANSFORM STYLES TO EACH SPAN.
@@ -84,7 +81,7 @@ function intro(dispatch, demoPanes) {
 
   // 5. START DEMO: REMOVE THE MATRIX ELEMENT, SHOW THE DEMO ELEMENTS, DISPATCH AN ACTION.
   function removeMatrixShowDemo() {
-    demoContainer.className = origCls
+    demoContainer.className = `${origCls} o-0`
     demoContainer.innerHTML = demoPanes
     dispatch(demoItemChange(0))
   }

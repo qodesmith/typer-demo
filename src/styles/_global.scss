@@ -44,9 +44,12 @@ body {
   }
 }
 
+#typer-demo-container {
+  transition: opacity .5s;
+}
+
 #explanation,
 #example {
-  // flex-basis: 0;
   transition: all .5s;
 }
 
