@@ -16,6 +16,8 @@ class App extends Component {
   }
 
   render() {
+    const showControls = this.props.index !== null
+
     if (this.state.error) {
       return (
         <div className='w-50 w-100-m ph3'>
@@ -30,8 +32,10 @@ class App extends Component {
       )
     }
 
-    return <Controls />
+    return showControls ? <Controls /> : null
   }
 }
 
-export default App
+const mapStateToProps = ({ app }) => ({ index: app.index })
+
+export default connect(mapStateToProps)(App)

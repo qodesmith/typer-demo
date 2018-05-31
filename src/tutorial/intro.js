@@ -82,10 +82,10 @@ function intro(dispatch, demoPanes) {
     }, largestNum * 2000)
   }
 
-  // 5. START DEMO: REMOVE THE MATRIX ELEMENT, SHOW THE DEMO ELEMENTS.
+  // 5. START DEMO: REMOVE THE MATRIX ELEMENT, SHOW THE DEMO ELEMENTS, DISPATCH AN ACTION.
   function removeMatrixShowDemo() {
-    demoContainer.innerHTML = demoPanes
     demoContainer.className = origCls
+    demoContainer.innerHTML = demoPanes
     dispatch(demoItemChange(0))
   }
 }

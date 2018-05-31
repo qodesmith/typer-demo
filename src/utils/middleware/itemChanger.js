@@ -9,6 +9,7 @@ const items = {
 const itemChanger = store => next => action => {
   next(action) // Actions get passed through by default.
   if (action.type !== 'DEMO_ITEM_CHANGE') return
+  return
 
   // Kill all Typers on the screen.
   document.body.dispatchEvent(kill)

@@ -5,10 +5,13 @@ export default typerDemo
 window.typer = typer
 
 function typerDemo() {
+  return
   typerDemoExample()
 
   typer('#explanation .container')
-    .line('Welcome to the <span class="lime fw5">Typer.js</span> demonstration!')
+    .line()
+    .pause(1000)
+    .continue('Welcome to the <span class="lime fw5">Typer.js</span> demonstration!')
     .pause(1200)
     .back(14, 40)
     .continue('tutorial.')

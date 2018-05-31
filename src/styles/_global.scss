@@ -21,6 +21,10 @@ body {
   transition: background .2s, color .2s;
 }
 
+.controls-container {
+  transition: opacity .5s;
+}
+
 .control {
   background: transparent;
   color: inherit;
@@ -42,7 +46,12 @@ body {
 
 #explanation,
 #example {
-  flex-basis: 0;
+  // flex-basis: 0;
+  transition: all .5s;
+}
+
+.pane-spacer {
+  height: 20px;
 }
 
 .matrix {
@@ -58,5 +67,3 @@ body {
 .mono {
   font-family: monospace;
 }
-
-

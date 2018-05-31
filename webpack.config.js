@@ -195,8 +195,10 @@ module.exports = (env, argv) => ({
       */
       {
         test: /\.(scss|css)$/,
-        exclude: /node_modules/,
-        include: path.resolve(__dirname, 'src'),
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/typer-js')
+        ],
         use: [
           MiniCssExtractPlugin.loader, // https://goo.gl/uUBr8G
           {
@@ -320,12 +322,7 @@ module.exports = (env, argv) => ({
         './src/**/*.jsx',
         './src/index.ejs'
       ], { absolute: true }),
-
-      /*
-        Optionally whitelist 3rd party libraries.
-        Example:
-          whitelist: whitelister('./node_modules/library/styles.css')
-      */
+      whitelist: whitelister('./node_modules/typer-js/typer.css')
     })
   ].filter(Boolean),
 
