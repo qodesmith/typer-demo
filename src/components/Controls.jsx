@@ -22,6 +22,11 @@ class Controls extends Component {
       // Fade-in the controls-container (our React portion of the app).
       this.setState({ opacityNum: 100 })
 
+      // Fade in the demo container.
+      const container = document.querySelector('#typer-demo-container')
+      container.classList.remove('o-0')
+      container.classList.add('o-100')
+
       // Extend the panes vertically.
       setTimeout(() => {
         panes.forEach((pane, i) => {

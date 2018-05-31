@@ -82,7 +82,10 @@ function intro(dispatch, demoPanes) {
   // 5. START DEMO: REMOVE THE MATRIX ELEMENT, SHOW THE DEMO ELEMENTS, DISPATCH AN ACTION.
   function removeMatrixShowDemo() {
     demoContainer.className = `${origCls} o-0`
-    demoContainer.innerHTML = demoPanes
-    dispatch(demoItemChange(0))
+    setTimeout(() => {
+      demoContainer.classList.add('ready')
+      demoContainer.innerHTML = demoPanes
+      dispatch(demoItemChange(0))
+    }, 50)
   }
 }

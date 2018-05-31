@@ -45,7 +45,9 @@ body {
 }
 
 #typer-demo-container {
-  transition: opacity .5s;
+  &.ready {
+    transition: opacity .5s;
+  }
 }
 
 #explanation,
