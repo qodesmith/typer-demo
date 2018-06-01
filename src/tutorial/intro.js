@@ -7,7 +7,7 @@ export default intro
 function intro(dispatch, demoPanes) {
   const demoContainer = document.querySelector('#typer-demo-container')
   const origCls = demoContainer.className
-  demoContainer.className = `${origCls} align-items-center justify-center lime matrix f-2em`
+  demoContainer.className = `${origCls} align-items-center justify-center lime matrix overflow-h`
 
   // 1. TYPE OUT THE MATRIX SCENE.
   typer(demoContainer)
@@ -69,7 +69,7 @@ function intro(dispatch, demoPanes) {
       let degrees = randomNum(140, 360)
       degrees = degrees % 2 ? degrees * -1 : degrees
 
-      span.style.left = `${randomNum(-20, 20)}vw`
+      span.style.left = `${randomNum(-20, 20)}vmax`
       span.style.transform = `rotate(${degrees}deg)`
       span.style.top = '60vh'
     })

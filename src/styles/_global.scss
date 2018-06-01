@@ -45,7 +45,10 @@ body {
 }
 
 #typer-demo-container {
+  font-size: 6vmin;
+
   &.ready {
+    font-size: initial;
     transition: opacity .5s;
   }
 }
