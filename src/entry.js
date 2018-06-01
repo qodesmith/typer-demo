@@ -36,8 +36,8 @@ const demoPanes = `
 
 document.body.className = 'bg-black fw1 white df flex-col align-items-center'
 document.body.innerHTML = `
-  <div id="typer-demo-container" class="w-100 h-100 ph8-d pv6-d ph8-t pv6-t pa3 df flex-col flex-grow-1"></div>
-  <div id="app" class="w-100 pr3 pb3 pl3"></div>
+  <div id="typer-demo-container" class="w-100 h-100 ph8-d pv6-d pa6-t pa3 df flex-col flex-grow-1"></div>
+  <div id="app" class="w-100 pb3 ph3 ph0-t"></div>
 `;
 
 ReactDOM.render(

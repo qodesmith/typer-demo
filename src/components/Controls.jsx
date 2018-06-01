@@ -4,7 +4,6 @@ import { menuItems } from 'utils/constants'
 import { demoItemChange, togglePlay } from 'actions'
 
 
-const style = { width: `calc(100% / ${menuItems.length})` }
 const itemCls = 'item tc radius-0-5 pa3 pointer'
 const activeCls = 'bg-lime black fw4'
 const cntrlCls = 'pointer ba-1px control'
@@ -52,12 +51,11 @@ class Controls extends Component {
 
     return (
       <div className={`controls-container o-${opacityNum}`}>
-        <div className='df dn-m no-select mb4 white-70'>
+        <div className='df dn-m justify-between no-select mb4 white-70 ph6-t'>
           {
             menuItems.map((item, i) => (
               <div
                 key={item}
-                style={style}
                 onClick={() => changeItem(i, index)}
                 className={item === demoItem ? `${itemCls} ${activeCls}` : itemCls}
               >
