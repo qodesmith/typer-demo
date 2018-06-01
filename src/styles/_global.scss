@@ -26,8 +26,8 @@ body {
 }
 
 .control {
-  background: transparent;
-  color: inherit;
+  @extend .bg-transparent;
+  @extend .color-inherit;
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;

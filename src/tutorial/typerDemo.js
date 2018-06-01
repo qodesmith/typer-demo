@@ -2,11 +2,8 @@ import typer from 'typer-js'
 import { demoItemChange } from 'actions'
 export default typerDemo
 
-window.typer = typer
-
-function typerDemo() {
-  return
-  typerDemoExample()
+async function typerDemo() {
+  await new Promise(resolve => setTimeout(resolve, 2000))
 
   typer('#explanation .container')
     .line()
@@ -17,7 +14,7 @@ function typerDemo() {
     .continue('tutorial.')
     .pause(1000)
     .back(9, 50)
-    .continue('explanation-of-all-the-methods!')
+    .continue('explanation-of-all-the-things!')
     .pause(1200)
     .back('all', 10)
     .continue("<span class='lime'>Typer</span> is a JavaScript <em>typing</em> library")
@@ -47,14 +44,12 @@ function typerDemo() {
     .pause()
     .line('If no speed is given, <span class="lime">Typer</span> will default to a speed of 70.')
     .pause(1500)
-}
 
-function typerDemoExample() {
   typer('#example .container')
-    .cursor({block: true, blink: 'hard'})
+    .cursor({ block: true, blink: 'hard' })
     .line()
     .listen('typer-1')
-    .continue(`typer(<span class="yellow">'.someClass'</span>,`)
+    .continue(`typer(<span class="yellow">'.someClass'</span>`)
     .pause(1500)
     .back(-6, 10)
     .continue(`<span class="yellow">'#some-id'</span>`)

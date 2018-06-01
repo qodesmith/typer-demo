@@ -1,3 +1,8 @@
+// You may or may not need this depending on
+// what JavaScript features you're using.
+// Feel free to remove it and see what happens!
+import '@babel/polyfill'
+
 // Import our top-level sass file.
 import './styles/styles.scss'
 
@@ -21,7 +26,7 @@ import store from './store'
 import intro from 'tutorial/intro.js'
 
 
-const paneCls = 'w-0 h-0 ph3 bg-white-20 radius-0-5 pa3'
+const paneCls = 'f-1-3em w-0 h-0 ph3 bg-white-20 radius-0-5 pa3 df justify-center align-items-center'
 
 // Create the markup for Typer and our React app.
 const demoPanes = `
