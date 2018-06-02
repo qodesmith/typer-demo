@@ -1,5 +1,5 @@
 import typer from 'typer-js'
-import { demoItemChange } from 'actions'
+import { showControls } from 'actions'
 import { randomNum } from 'helpers'
 export default intro
 
@@ -86,7 +86,7 @@ function intro(dispatch, demoPanes) {
     setTimeout(() => {
       demoContainer.classList.add('ready')
       demoContainer.innerHTML = demoPanes
-      dispatch(demoItemChange(0))
+      dispatch(showControls())
     }, 50)
   }
 }

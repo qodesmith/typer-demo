@@ -33,7 +33,7 @@ body {
   width: 2.5rem;
   font-size: 1rem;
   border: 1px solid;
-  transition: background .1s;
+  transition: background .1s, color .2s;
 
   &:hover {
     @extend .bg-white-20;

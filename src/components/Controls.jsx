@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { menuItems } from 'utils/constants'
-import { demoItemChange, togglePlay } from 'actions'
+import { demoItemChange, togglePlay, enableControls } from 'actions'
+import { wait } from 'helpers'
 
 
 const itemCls = 'item tc radius-0-5 pa3 pointer'
@@ -15,52 +16,58 @@ class Controls extends Component {
     this.state = { opacityNum: 0 }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const panes = document.querySelectorAll('#explanation, #example')
 
-    setTimeout(() => {
-      // Fade-in the controls-container (our React portion of the app).
-      this.setState({ opacityNum: 100 })
+    await wait(100)
 
-      // Fade in the demo container.
-      const container = document.querySelector('#typer-demo-container')
-      container.classList.remove('o-0')
-      container.classList.add('o-100')
+    // Fade-in the controls-container (our React portion of the app).
+    this.setState({ opacityNum: 100 })
 
-      // Extend the panes vertically.
-      setTimeout(() => {
-        panes.forEach((pane, i) => {
-          pane.classList.remove('h-0')
-          pane.classList.add(`h-${i ? 66 : 34}`)
-          pane.classList.add('pv3')
-        })
+    // Fade in the demo container.
+    const container = document.querySelector('#typer-demo-container')
+    container.classList.remove('o-0')
+    container.classList.add('o-100')
 
-        // Extend the panes horizontally
-        setTimeout(() => {
-          panes.forEach(pane => {
-            pane.classList.remove('w-0')
-            pane.classList.add('w-100')
-          })
-        }, 500)
-      }, 500)
-    }, 100)
+    // Extend the panes vertically.
+    await wait(500)
+    panes.forEach((pane, i) => {
+      pane.classList.remove('h-0')
+      pane.classList.add(`h-${i ? 66 : 34}`)
+      pane.classList.add('pv3')
+    })
+
+    // Extend the panes horizontally
+    await wait(500)
+    panes.forEach(pane => {
+      pane.classList.remove('w-0')
+      pane.classList.add('w-100')
+    })
+
+    // Enable the controls.
+    await wait(500)
+    this.props.enable()
+
+    // Start the demonstration.
+    await wait(200)
+    this.props.prev(true, 1)
   }
 
   render() {
-    const { demoItem, index, playing, prev, playStop, next, changeItem } = this.props
+    const { demoItem, index, playing, prev, playStop, next, changeItem, enabled } = this.props
     const { opacityNum } = this.state
-    const clickable = false
-    const buttonCls = `${cntrlCls}${clickable ? '' : ' white-70 not-allowed'}`
+    const buttonCls = `${cntrlCls}${enabled ? '' : ' white-70 not-allowed'}`
 
     return (
       <div className={`controls-container o-${opacityNum}`}>
+        {/* MENU ITEMS (desktop) */}
         <div className='df dn-m justify-between no-select mb4 white-70 ph6-t'>
           {
             menuItems.map((item, i) => (
               <div
                 key={item}
-                onClick={() => changeItem(clickable, i, index)}
-                className={!clickable ? disabledCls : item === demoItem ? activeCls : itemCls}
+                onClick={() => changeItem(enabled, i, index)}
+                className={!enabled ? disabledCls : item === demoItem ? activeCls : itemCls}
               >
                 {item}
               </div>
@@ -68,19 +75,22 @@ class Controls extends Component {
           }
         </div>
 
+        {/* CONTROLS (& mobile menu items) */}
         <div className='tc tl-m no-select df-m'>
           <div>
-            <button className={`${buttonCls} pr4`} onClick={() => prev(clickable, index)}>〈</button>
+            <button className={`${buttonCls} pr4`} onClick={() => prev(enabled, index)}>〈</button>
             <button
               className={`${buttonCls} play-stop mh3`}
-              onClick={() => playStop(clickable)}
+              onClick={() => playStop(enabled)}
             >
               {playing ? '◼' : '▶'}
             </button>
-            <button className={`${buttonCls} pl4`} onClick={() => next(clickable, index)}>〉</button>
+            <button className={`${buttonCls} pl4`} onClick={() => next(enabled, index)}>〉</button>
           </div>
+
+          {/* MENU ITEMS (mobile) */}
           <div className='b dn df-m flex-grow-1 align-items-center justify-center'>
-            <span className={!clickable && 'white-70'}>{demoItem}</span>
+            <span className={enabled ? '' : 'white-70'}>{demoItem}</span>
           </div>
         </div>
       </div>
@@ -89,20 +99,22 @@ class Controls extends Component {
 }
 
 const mapStateToProps = ({ app }) => ({
+  enabled: app.controlsEnabled,
   demoItem: app.demoItem,
   index: app.index,
   playing: app.playing
 })
 
 const mapDispatchToProps = dispatch => ({
-  prev: (clickable, index) => clickable && index && dispatch(demoItemChange(index - 1)),
-  playStop: clickable => clickable && dispatch(togglePlay()),
-  next: (clickable, index) => {
-    if (!clickable || index === menuItems.length - 1) return
+  enable: () => dispatch(enableControls()),
+  prev: (enabled, index) => enabled && index && dispatch(demoItemChange(index - 1)),
+  playStop: enabled => enabled && dispatch(togglePlay()),
+  next: (enabled, index) => {
+    if (!enabled || index === menuItems.length - 1) return
     dispatch(demoItemChange(index + 1))
   },
-  changeItem: (clickable, newIndex, currentIndex) => {
-    if (!clickable || newIndex === currentIndex) return
+  changeItem: (enabled, newIndex, currentIndex) => {
+    if (!enabled || newIndex === currentIndex) return
     dispatch(demoItemChange(newIndex))
   }
 })

@@ -1,6 +1,8 @@
 import { menuItems } from 'utils/constants'
 
 const initialState = {
+  showControls: false,
+  controlsEnabled: false,
   demoItem: null,
   index: null,
   playing: false
@@ -8,6 +10,10 @@ const initialState = {
 
 const appReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case 'SHOW_CONTROLS':
+      return { ...state, showControls: true }
+    case 'ENABLE_CONTROLS':
+      return { ...state, controlsEnabled: true }
     case 'DEMO_ITEM_CHANGE':
       return {
         ...state,
