@@ -1,4 +1,5 @@
 import { menuItems, menuItemDemos, killEvent } from 'utils/constants'
+import { resetContainers } from 'helpers'
 
 const itemChanger = store => next => action => {
   next(action) // Actions get passed through by default.
@@ -8,9 +9,7 @@ const itemChanger = store => next => action => {
   document.body.dispatchEvent(killEvent)
 
   // Clear the panes of any contents.
-  document
-    .querySelectorAll('.container')
-    .forEach(container => (container.innerHTML = ''))
+  resetContainers()
 
   // Start the demo for the particular item.
   const item = menuItems[action.index]

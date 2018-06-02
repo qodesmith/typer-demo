@@ -1,4 +1,5 @@
 import { menuItems, menuItemDemos, killEvent } from 'utils/constants'
+import { resetContainers } from 'helpers'
 
 const togglePlay = store => next => action => {
   next(action)
@@ -14,9 +15,7 @@ const togglePlay = store => next => action => {
   // Should play the current demo from the beginning...
   } else {
     // Clear the panes of any contents.
-    document
-      .querySelectorAll('.container')
-      .forEach(container => (container.innerHTML = ''))
+    resetContainers()
 
     const demoObj = menuItemDemos.find(({ name }) => name === demoItem)
     demoObj.demo(store.dispatch, index)
