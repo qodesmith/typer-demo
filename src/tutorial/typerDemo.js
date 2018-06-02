@@ -3,6 +3,10 @@ import { demoItemChange } from 'actions'
 export default typerDemo
 
 async function typerDemo(dispatch, index) {
+  const doc = '<span class="i darkturquoise">document</span>'
+  const dot = '<span class="deeppink">.</span>'
+  const qs = '<span class="darkturquoise">querySelector</span>'
+
   typer('#explanation .container')
     .line()
     .pause(1000)
@@ -32,6 +36,14 @@ async function typerDemo(dispatch, index) {
     .line('The 1st argument is any valid CSS selector:')
     .emit('typer-1')
     .listen('typer-2')
+    .empty()
+    .continue('The 1st argument can also be a DOM element:')
+    .emit('typer-2a')
+    .listen('typer-2b')
+    .back('all', 10)
+    .continue(`But let's stick with a string selector for now.`)
+    .emit('typer-2c')
+    .listen('typer-2d')
     .empty()
     .continue('The 2nd argument is a speed - milliseconds / character typed:')
     .emit('typer-3')
@@ -76,6 +88,25 @@ async function typerDemo(dispatch, index) {
     .back(-6, 10)
     .continue(`<span class="yellow">'.someClass'</span>`)
     .emit('typer-2')
+
+    .listen('typer-2a')
+    .back(-6, 10)
+    .continue(`${doc}${dot}body`)
+    .pause(1500)
+    .back(-6, 10)
+    .continue(`${doc}${dot}${qs}(<span class="yellow">'div'</span>)`)
+    .pause(1500)
+    .back('all', 10)
+    .continue(`<span class="i darkturquoise">const</span> el <span class="deeppink">=</span> ${doc}${dot}${qs}(<span class="yellow">'.someClass'</span>)`)
+    .line(`typer(el`)
+    .pause(1500)
+    .emit('typer-2b')
+    .listen('typer-2c')
+    .empty()
+    .continue(`typer(<span class="yellow">'.someClass'</span>`)
+    .pause(1500)
+    .emit('typer-2d')
+
     .listen('typer-3')
     .continue(', <span class="mediumorchid">100</span>)')
     .emit('typer-4')
