@@ -5,7 +5,7 @@ import { demoItemChange, togglePlay } from 'actions'
 
 
 const itemCls = 'item tc radius-0-5 pa3 pointer'
-const activeCls = 'bg-lime black fw4'
+const activeCls = `${itemCls} bg-lime black fw4`
 const cntrlCls = 'pointer ba-1px control'
 
 class Controls extends Component {
@@ -57,7 +57,7 @@ class Controls extends Component {
               <div
                 key={item}
                 onClick={() => changeItem(i, index)}
-                className={item === demoItem ? `${itemCls} ${activeCls}` : itemCls}
+                className={item === demoItem ? activeCls : itemCls}
               >
                 {item}
               </div>

@@ -26,7 +26,7 @@ import store from './store'
 import intro from 'tutorial/intro.js'
 
 
-const paneCls = 'f-1-3em w-0 h-0 ph3 bg-white-20 radius-0-5 pa3 df justify-center align-items-center'
+const paneCls = 'f-1-3em f-1em-m w-0 h-0 ph3 bg-white-20 radius-0-5 pa3 df justify-center align-items-center'
 
 // Create the markup for Typer and our React app.
 const demoPanes = `
@@ -35,7 +35,7 @@ const demoPanes = `
   </div>
   <div class="pa3-d pa3-t pt3"></div>
   <div id="example" class="${paneCls} mla mono">
-    <div class="container lh-1-3 tc"></div>
+    <div class="container lh-1-3"></div>
   </div>
 `
 
