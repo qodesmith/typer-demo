@@ -70,7 +70,7 @@ class Controls extends Component {
             <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
             <button
               className={`${cntrlCls} play-stop mh3`}
-              onClick={() => playStop(playing)}
+              onClick={playStop}
             >
               {playing ? '◼' : '▶'}
             </button>
@@ -93,7 +93,7 @@ const mapStateToProps = ({ app }) => ({
 
 const mapDispatchToProps = dispatch => ({
   prev: index => index && dispatch(demoItemChange(index - 1)),
-  playStop: playing => dispatch(togglePlay(!playing)),
+  playStop: () => dispatch(togglePlay()),
   next: index => {
     if (index === menuItems.length - 1) return
     dispatch(demoItemChange(index + 1))
