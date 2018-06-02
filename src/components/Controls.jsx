@@ -6,6 +6,7 @@ import { demoItemChange, togglePlay } from 'actions'
 
 const itemCls = 'item tc radius-0-5 pa3 pointer'
 const activeCls = `${itemCls} bg-lime black fw4`
+const disabledCls = `${itemCls}`
 const cntrlCls = 'pointer ba-1px control'
 
 class Controls extends Component {
@@ -48,6 +49,7 @@ class Controls extends Component {
   render() {
     const { demoItem, index, playing, prev, playStop, next, changeItem } = this.props
     const { opacityNum } = this.state
+    const clickable = false
 
     return (
       <div className={`controls-container o-${opacityNum}`}>
@@ -56,8 +58,8 @@ class Controls extends Component {
             menuItems.map((item, i) => (
               <div
                 key={item}
-                onClick={() => changeItem(i, index)}
-                className={item === demoItem ? activeCls : itemCls}
+                onClick={() => changeItem(clickable, i, index)}
+                className={(clickable && item === demoItem) ? activeCls : itemCls}
               >
                 {item}
               </div>
@@ -67,14 +69,14 @@ class Controls extends Component {
 
         <div className='tc tl-m no-select df-m'>
           <div className=''>
-            <button className={`${cntrlCls} pr4`} onClick={() => prev(index)}>〈</button>
+            <button className={`${cntrlCls} pr4`} onClick={() => prev(clickable, index)}>〈</button>
             <button
               className={`${cntrlCls} play-stop mh3`}
-              onClick={playStop}
+              onClick={() => playStop(clickable)}
             >
               {playing ? '◼' : '▶'}
             </button>
-            <button className={`${cntrlCls} pl4`} onClick={() => next(index)}>〉</button>
+            <button className={`${cntrlCls} pl4`} onClick={() => next(clickable, index)}>〉</button>
           </div>
           <div className='b dn df-m flex-grow-1 align-items-center justify-center'>
             <span>{demoItem}</span>
@@ -92,14 +94,14 @@ const mapStateToProps = ({ app }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  prev: index => index && dispatch(demoItemChange(index - 1)),
-  playStop: () => dispatch(togglePlay()),
-  next: index => {
-    if (index === menuItems.length - 1) return
+  prev: (clickable, index) => clickable && index && dispatch(demoItemChange(index - 1)),
+  playStop: clickable => clickable && dispatch(togglePlay()),
+  next: (clickable, index) => {
+    if (!clickable || index === menuItems.length - 1) return
     dispatch(demoItemChange(index + 1))
   },
-  changeItem: (newIndex, currentIndex) => {
-    if (newIndex === currentIndex) return
+  changeItem: (clickable, newIndex, currentIndex) => {
+    if (!clickable || newIndex === currentIndex) return
     dispatch(demoItemChange(newIndex))
   }
 })
