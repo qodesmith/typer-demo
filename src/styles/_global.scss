@@ -28,11 +28,11 @@ body {
 .control {
   @extend .bg-transparent;
   @extend .color-inherit;
+  @extend .f-1rem;
+  @extend .ba-1px;
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;
-  font-size: 1rem;
-  border: 1px solid;
   transition: background .1s, color .2s;
 
   &:hover {

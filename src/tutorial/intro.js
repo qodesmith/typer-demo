@@ -1,6 +1,6 @@
 import typer from 'typer-js'
 import { showControls } from 'actions'
-import { randomNum } from 'helpers'
+import { randomNum, wait } from 'helpers'
 export default intro
 
 
@@ -37,7 +37,7 @@ function intro(dispatch, demoPanes) {
   }
 
   // 3. APPLY A CUSTOM TRANSITION TO EACH SPAN.
-  function customTransitions(currentTyper) {
+  async function customTransitions(currentTyper) {
     const spans = currentTyper.querySelectorAll('span')
     let largestNum = 0
 
@@ -58,11 +58,12 @@ function intro(dispatch, demoPanes) {
       span.style.transition = transition
     })
 
-    setTimeout(() => leftAndTransform(spans, largestNum, currentTyper), 50)
+    await wait(50)
+    leftAndTransform(spans, largestNum, currentTyper)
   }
 
   // 4. EXPLOSION: APPLY CUSTOM LEFT & TRANSFORM STYLES TO EACH SPAN.
-  function leftAndTransform(spans, largestNum, currentTyper) {
+  async function leftAndTransform(spans, largestNum, currentTyper) {
     // Get rid of the cursor.
     currentTyper.classList.remove('typer')
 
@@ -75,18 +76,17 @@ function intro(dispatch, demoPanes) {
       span.style.top = '60vh'
     })
 
-    setTimeout(() => {
-      removeMatrixShowDemo()
-    }, largestNum * 2000)
+    await wait(largestNum * 2000)
+    removeMatrixShowDemo()
   }
 
   // 5. START DEMO: REMOVE THE MATRIX ELEMENT, SHOW THE DEMO ELEMENTS, DISPATCH AN ACTION.
-  function removeMatrixShowDemo() {
+  async function removeMatrixShowDemo() {
     demoContainer.className = `${origCls} o-0`
-    setTimeout(() => {
-      demoContainer.classList.add('ready')
-      demoContainer.innerHTML = demoPanes
-      dispatch(showControls())
-    }, 50)
+
+    await wait(50)
+    demoContainer.classList.add('ready')
+    demoContainer.innerHTML = demoPanes
+    dispatch(showControls())
   }
 }
