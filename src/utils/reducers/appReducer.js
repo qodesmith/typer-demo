@@ -22,7 +22,6 @@ const appReducer = (state = initialState, action = {}) => {
         playing: true
       }
     case 'TOGGLE_PLAY':
-      console.log('TOGGLE PLAY: REDUCER')
       return { ...state, playing: !state.playing }
     default:
       return state

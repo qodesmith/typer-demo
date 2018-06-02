@@ -12,7 +12,7 @@ async function typerDemo(dispatch, index) {
     .continue('tutorial.')
     .pause(1000)
     .back(9, 50)
-    .continue('explanation-of-all-the-things!')
+    .continue('explanation of all-the-things!')
     .pause(1200)
     .back('all', 10)
     .continue("<span class='lime'>Typer</span> is a JavaScript <em>typing</em> library")
