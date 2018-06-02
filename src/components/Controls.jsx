@@ -6,7 +6,7 @@ import { demoItemChange, togglePlay } from 'actions'
 
 const itemCls = 'item tc radius-0-5 pa3 pointer'
 const activeCls = `${itemCls} bg-lime black fw4`
-const disabledCls = `${itemCls}`
+const disabledCls = itemCls.replace('pointer', 'not-allowed')
 const cntrlCls = 'pointer ba-1px control'
 
 class Controls extends Component {
@@ -50,6 +50,7 @@ class Controls extends Component {
     const { demoItem, index, playing, prev, playStop, next, changeItem } = this.props
     const { opacityNum } = this.state
     const clickable = false
+    const buttonCls = `${cntrlCls}${clickable ? '' : ' white-70 not-allowed'}`
 
     return (
       <div className={`controls-container o-${opacityNum}`}>
@@ -59,7 +60,7 @@ class Controls extends Component {
               <div
                 key={item}
                 onClick={() => changeItem(clickable, i, index)}
-                className={(clickable && item === demoItem) ? activeCls : itemCls}
+                className={!clickable ? disabledCls : item === demoItem ? activeCls : itemCls}
               >
                 {item}
               </div>
@@ -68,18 +69,18 @@ class Controls extends Component {
         </div>
 
         <div className='tc tl-m no-select df-m'>
-          <div className=''>
-            <button className={`${cntrlCls} pr4`} onClick={() => prev(clickable, index)}>〈</button>
+          <div>
+            <button className={`${buttonCls} pr4`} onClick={() => prev(clickable, index)}>〈</button>
             <button
-              className={`${cntrlCls} play-stop mh3`}
+              className={`${buttonCls} play-stop mh3`}
               onClick={() => playStop(clickable)}
             >
               {playing ? '◼' : '▶'}
             </button>
-            <button className={`${cntrlCls} pl4`} onClick={() => next(clickable, index)}>〉</button>
+            <button className={`${buttonCls} pl4`} onClick={() => next(clickable, index)}>〉</button>
           </div>
           <div className='b dn df-m flex-grow-1 align-items-center justify-center'>
-            <span>{demoItem}</span>
+            <span className={!clickable && 'white-70'}>{demoItem}</span>
           </div>
         </div>
       </div>
