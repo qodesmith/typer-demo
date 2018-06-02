@@ -2,9 +2,7 @@ import typer from 'typer-js'
 import { demoItemChange } from 'actions'
 export default typerDemo
 
-async function typerDemo() {
-  await new Promise(resolve => setTimeout(resolve, 2000))
-
+async function typerDemo(dispatch, index) {
   typer('#explanation .container')
     .line()
     .pause(1000)
@@ -43,7 +41,22 @@ async function typerDemo() {
     .continue('The speed is optional.')
     .pause()
     .line('If no speed is given, <span class="lime">Typer</span> will default to a speed of 70.')
-    .pause(1500)
+    .pause(2000)
+    .empty()
+    .continue(`With the speed argument, there's some fancy things we can do.`)
+    .pause(1000)
+    .line('If you provide an object, we can take advantage of')
+    .line('<span class="b">min</span> and <span class="b">max</span> values:')
+    .emit('typer-5')
+    .listen('typer-6')
+    .empty()
+    .continue('With <span class="b">min</span> and <span class="b">max</span> values')
+    .line(`we're able to simulate "real" typing.`)
+    .pause(1000)
+    .continue(' For example:')
+    .pause()
+    .line('This line is being typed with a <span class="b">min</span> of 20 and a <span class="b">max</span> of 350.', { min: 20, max: 350 })
+    // .run(() => dispatch(demoItemChange(index + 1)))
 
   typer('#example .container')
     .cursor({ block: true, blink: 'hard' })
@@ -64,6 +77,11 @@ async function typerDemo() {
     .continue(`<span class="yellow">'.someClass'</span>`)
     .emit('typer-2')
     .listen('typer-3')
-    .continue(', <span class="purple">100</span>)')
-    .emit('typer-4');
+    .continue(', <span class="mediumorchid">100</span>)')
+    .emit('typer-4')
+    .listen('typer-5')
+    .back(4)
+    .continue('{ min<span class="mediumorchid">: 20</span>, max<span class="mediumorchid">: 350</span> })')
+    .pause(1500)
+    .emit('typer-6')
 }

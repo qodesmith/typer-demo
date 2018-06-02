@@ -21,6 +21,7 @@ function intro(dispatch, demoPanes) {
     .continue([' Neo.'], 600)
     .pause(1000)
     .run(matrixToSpans)
+    .listen('this-will-never-come')
 
   // 2. CONVERT EACH LETTER TO A SPAN.
   function matrixToSpans() {
