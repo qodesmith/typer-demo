@@ -6,8 +6,8 @@ import { wait } from 'helpers'
 
 
 const itemCls = 'item tc radius-0-5 pa3 pointer'
-const activeCls = `${itemCls} bg-lime black fw4`
-const disabledCls = itemCls.replace('pointer', 'not-allowed')
+const activeCls = `${itemCls} bg-lime black`
+const disabledCls = itemCls.replace('pointer', 'not-allowed white-30')
 const cntrlCls = 'pointer ba-1px control'
 
 class Controls extends Component {
@@ -56,7 +56,7 @@ class Controls extends Component {
   render() {
     const { demoItem, index, playing, prev, playStop, next, changeItem, enabled } = this.props
     const { opacityNum } = this.state
-    const buttonCls = `${cntrlCls}${enabled ? '' : ' white-70 not-allowed'}`
+    const buttonCls = `${cntrlCls}${enabled ? '' : ' white-30 not-allowed'}`
 
     return (
       <div className={`controls-container o-${opacityNum}`}>
