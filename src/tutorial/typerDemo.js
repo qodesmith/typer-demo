@@ -2,7 +2,7 @@ import typer from 'typer-js'
 import { demoItemChange } from 'actions'
 export default typerDemo
 
-async function typerDemo(dispatch, index) {
+function typerDemo(dispatch, index) {
   const doc = '<span class="i darkturquoise">document</span>'
   const dot = '<span class="deeppink">.</span>'
   const qs = '<span class="darkturquoise">querySelector</span>'
@@ -63,12 +63,20 @@ async function typerDemo(dispatch, index) {
     .listen('typer-6')
     .empty()
     .continue('With <span class="b">min</span> and <span class="b">max</span> values')
-    .line(`we're able to simulate "real" typing.`)
+    .line(`we're able to simulate humanized typing.`)
     .pause(1000)
     .continue(' For example:')
     .pause()
     .line('This line is being typed with a <span class="b">min</span> of 20 and a <span class="b">max</span> of 350.', { min: 20, max: 350 })
-    // .run(() => dispatch(demoItemChange(index + 1)))
+    .pause(2000)
+    .empty()
+    .continue('For our example,')
+    .line(`we'll stick with using a number for speed:`)
+    .emit('typer-7')
+    .listen('typer-8')
+    .pause(2000)
+    .empty()
+    .run(() => dispatch(demoItemChange(index + 1)))
 
   typer('#example .container')
     .cursor({ block: true, blink: 'hard' })
@@ -88,7 +96,6 @@ async function typerDemo(dispatch, index) {
     .back(-6, 10)
     .continue(`<span class="yellow">'.someClass'</span>`)
     .emit('typer-2')
-
     .listen('typer-2a')
     .back(-6, 10)
     .continue(`${doc}${dot}body`)
@@ -106,7 +113,6 @@ async function typerDemo(dispatch, index) {
     .continue(`typer(<span class="yellow">'.someClass'</span>`)
     .pause(1500)
     .emit('typer-2d')
-
     .listen('typer-3')
     .continue(', <span class="mediumorchid">100</span>)')
     .emit('typer-4')
@@ -115,4 +121,8 @@ async function typerDemo(dispatch, index) {
     .continue('{ min<span class="mediumorchid">: 20</span>, max<span class="mediumorchid">: 350</span> })')
     .pause(1500)
     .emit('typer-6')
+    .listen('typer-7')
+    .back(22, 10)
+    .continue('<span class="mediumorchid">100</span>)')
+    .emit('typer-8')
 }
