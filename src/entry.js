@@ -45,10 +45,14 @@ document.body.innerHTML = `
   <div id="app" class="w-100 pb3 ph3 ph0-t"></div>
 `;
 
+// While developing, set this to true to skip the matrix demo.
+// For production, ensure it is false!
+const skip = true
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.querySelector('#app'),
-  () => intro(store.dispatch, demoPanes)
+  () => intro(store.dispatch, demoPanes, skip)
 )

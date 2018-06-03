@@ -4,9 +4,11 @@ import { randomNum, wait } from 'helpers'
 export default intro
 
 
-function intro(dispatch, demoPanes) {
+function intro(dispatch, demoPanes, skip) {
   const demoContainer = document.querySelector('#typer-demo-container')
   const origCls = demoContainer.className
+
+  if (skip) return removeMatrixShowDemo()
   demoContainer.className = `${origCls} align-items-center justify-center lime matrix overflow-h`
 
   // 1. TYPE OUT THE MATRIX SCENE.
