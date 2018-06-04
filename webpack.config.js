@@ -288,7 +288,7 @@ module.exports = (env, argv) => ({
     new CleanWebpackPlugin(['dist/*.js', 'dist/*.css'], {
       root: __dirname,
       verbose: true,
-      exclude: ['favicon.ico', '.gitignore']
+      exclude: ['favicon.ico', '.gitignore', 'Menlo-Streamlined.ttf']
     }),
 
     /*

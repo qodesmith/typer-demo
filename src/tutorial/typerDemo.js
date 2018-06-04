@@ -78,7 +78,7 @@ function typerDemo(dispatch, index) {
     .empty()
     .run(() => dispatch(demoItemChange(index + 1)))
 
-  typer('#example .container')
+  typer('#example .container', 40)
     .cursor({ block: true, blink: 'hard' })
     .line()
     .listen('typer-1')

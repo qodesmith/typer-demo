@@ -50,7 +50,7 @@ class Controls extends Component {
 
     // Start the demonstration.
     await wait(200)
-    this.props.prev(true, 1)
+    this.props.prev(true, __PROD__ ? 1 : 2) // Ternary for development purposes only.
   }
 
   render() {

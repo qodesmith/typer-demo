@@ -2,6 +2,11 @@
   px <-> em: http://pxtoem.com/
 */
 
+@font-face {
+  font-family: menlo;
+  src: url('/Menlo-Streamlined.ttf');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -73,5 +78,5 @@ body {
 }
 
 .mono {
-  font-family: monospace;
+  font-family: menlo, monospace;
 }

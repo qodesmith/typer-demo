@@ -47,7 +47,7 @@ document.body.innerHTML = `
 
 // While developing, set this to true to skip the matrix demo.
 // For production, ensure it is false!
-const skip = true
+const skip = !__PROD__
 
 ReactDOM.render(
   <Provider store={store}>

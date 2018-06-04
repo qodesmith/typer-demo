@@ -49,62 +49,75 @@ function cursorDemo(dispatch, index) {
     .continue([' →'])
     .pause(1500)
     .back('all', 10)
-    .continue('By using <span class="mono">block<span class="mediumorchid">: true</span></span>,')
+    .continue('By using<span class="mono"> block<span class="mediumorchid">: true</span></span>,')
     .line('we get the old-school style block like the one used below.')
-    .pause(2000)
-    .emit('cursor-7')
-
-    .listen('cursor-8')
+    .pause(3000)
     .empty()
     .continue('<strong class="u">blink</strong>')
-    .line('This cursor has a soft blinking motion')
     .pause()
-    .continue([' &#8594;'])
+    .line('This cursor has a soft blinking motion')
+    .continue([' →'])
     .pause(1500)
-    .back('all', 10)
-    .continue('The cursor below has a binary (on/off) blinking motion:')
+    .back(2, 10)
+    .continue('.')
+    .line('Soft blinking is the default setting, if not sepcified.')
+    .pause(1000)
+    .empty()
+    .continue(['<strong class="u">blink</strong>'], 1)
+    .line('The cursor below has a binary (on/off) blinking motion')
+    .line(`that's achieved with<span class="mono"> blink<span class="mediumorchid">:</span> <span class="yellow">'hard'</span></span>`)
+    .pause(2000)
+    .empty()
+    .continue('<strong class="u">color</strong>')
+    .line('The color of the cursor defaults to')
+    .line('whatever color the text is in the parent element.')
+    .pause(1500)
+    .empty()
+    .continue(['<strong class="u">color</strong>'], 1)
+    .line('But you can set the color of the cursor to')
+    .line(`anything you'd like.`)
+    .pause(1500)
+    .empty()
+    .continue(['<strong class="u">color</strong>'], 1)
+    .line('Feed it a named color, #hex, etc.')
+    .pause()
+    .line('Any valid css color will do:')
+    .emit('cursor-7')
+    .listen('cursor-8')
+    .empty()
+    .continue(['<strong class="u">color</strong>'], 1)
+    .line(`<span class="mono"><span class="white">color</span><span class="mediumorchid">:</span> <span class="yellow">'red' </span></span><span class="white">→</span>`)
+    .run(el => el.querySelector('.typer').classList.add('red'))
+    .pause(1500)
+    .run(el => el.querySelector('.typer').classList.remove('red'))
+    .back(6, 10)
+    .continue(`<span class="mono yellow">#00ff00' </span><span class="white">→</span>`)
+    .run(el => el.querySelector('.typer').classList.add('lime'))
+    .pause(1500)
+    .run(el => el.querySelector('.typer').classList.remove('lime'))
+    .back(10, 10)
+    .continue(`<span class="mono yellow">hsla(240, 100%, 50%, 1)' </span><span class="white">→</span>`)
+    .run(el => el.querySelector('.typer').classList.add('blue'))
+    .pause(2000)
+    .run(el => el.querySelector('.typer').classList.remove('blue'))
+    .empty()
+    .continue(['<strong class="u">color</strong>'], 1)
+    .line('If you omit the cursor object <em>or</em> method altogether,')
+    .line('the following default values will be used under the hood:')
+    .pause()
+    .line(`<span class="mono">block<span class="mediumorchid">: false</span>, blink<span class="mediumorchid">:</span> <span class="yellow">'soft'</span></span>`)
+    .pause(3000)
     .emit('cursor-9')
     .listen('cursor-10')
-    .empty()
-    .continue('<strong>color</strong>')
-    .line('You can set the color of the cursor.')
-    .run(function() {
-      document.querySelector('.highlight.color').classList.add('show-border');
-    })
-    .pause(1000)
-    .back('all', 10)
-    .continue('If no color is specified, the cursor will default')
-    .line('to the text color of the parent element.')
-    .pause(1000)
-    .empty()
-    .continue(['<strong>color</strong'])
-    .line('Feed it a named color, #hex, etc.')
-    .run(function() {
-      document.querySelector('.highlight.color').classList.remove('show-border');
-    })
-    .line('Any valid css color will do:')
-    .emit('cursor-11')
-    .listen('cursor-12')
-    .empty()
-    .continue('If you omit the cursor object <em>or</em> method altogether,')
-    .line('the following default values will be used:')
-    .pause()
-    .line('<span class="mono">{block: <span class="mediumorchid mono">false</span>, blink: <span class="yellow">\'soft\'</span>}</span>')
-    .line('and the color will be set to the parent elements\' text color.')
-    .pause(1500)
-    .emit('cursor-13')
-    .listen('line-1')
-    .run(function() {
-      typerDemo.next('line');
-    });
+    .run(() => dispatch(demoItemChange(index + 1)))
 
   const previousExampleContents = [`typer(<span class="yellow">'.someClass'</span>, <span class="mediumorchid">100</span>)`]
 
-  typer('#example .container')
+  typer('#example .container', 40)
     .cursor({ block: true, blink: 'hard' })
 
     // Populate with previous demo contents.
-    .line(previousExampleContents)
+    .line(previousExampleContents, 1)
 
     .listen('cursor-1')
     .line('  .cursor()')
@@ -121,75 +134,18 @@ function cursorDemo(dispatch, index) {
     .pause(2000)
     .emit('cursor-6')
     .listen('cursor-7')
-
-    .continue(['<span class="arrow-blink lime b"> →</span>'])
-    .run(function() {
-      var arrow = document.querySelector('.arrow-blink');
-      var hl = document.querySelector('.highlight.block');
-      hl.classList.add('show-border');
-
-      var times = 0;
-      var blink = setInterval(function() {
-        if (times % 2) {
-          arrow.style.color = '';
-        } else {
-          arrow.style.color = 'transparent';
-        }
-
-        times++;
-        if (times === 6) {
-          clearInterval(blink);
-          var e = new CustomEvent('done-blinking-block');
-          document.body.dispatchEvent(e);
-          hl.classList.remove('show-border');
-        }
-      }, 750);
-    })
-
-    .listen('done-blinking-block')
-    .pause(1000)
-    .back(2, 10)
-    .emit('cursor-8')
-    .listen('cursor-9')
-    .continue(['<span class="arrow-blink lime"> &#8594;</span>'])
-    .run(function() {
-      var arrow = document.querySelector('.arrow-blink');
-      var hl = document.querySelector('.highlight.blink');
-      hl.classList.add('show-border');
-
-      var times = 0;
-      var blink = setInterval(function() {
-        if (times % 2) {
-          arrow.style.color = '';
-        } else {
-          arrow.style.color = 'transparent';
-        }
-
-        times++;
-        if (times === 8) {
-          clearInterval(blink);
-          var e = new CustomEvent('done-blinking-blink');
-          document.body.dispatchEvent(e);
-          hl.classList.remove('show-border');
-        }
-      }, 750);
-    })
-    .listen('done-blinking-blink')
-    .pause(1000)
-    .back(2, 10)
-    .emit('cursor-10')
-    .listen('cursor-11')
-    .back(6, 10)
-    .continue('<span class="yellow">rgb(255, 0, 0)\'</span>})')
+    .back(7, 10)
+    .continue('<span class="yellow">rgb(255, 0, 0)\'</span> })')
     .pause(1500)
-    .back(17, 10)
+    .back(18, 10)
     .continue('<span class="yellow">hsl(0, 100%, 50%)\'</span>})')
     .pause(1500)
-    .back(20, 10)
-    .continue('<span class="yellow">#ff0000\'</span>})')
+    .back(21, 10)
+    .continue('<span class="yellow">#ff0000\'</span> })')
     .pause(1500)
-    .emit('cursor-12')
-    .listen('cursor-13')
-    .back(20, 10)
-    .continue('})');
+    .emit('cursor-8')
+    .listen('cursor-9')
+    .back(21, 10)
+    .continue(' })')
+    .emit('cursor-10')
 }
