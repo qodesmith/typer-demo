@@ -26,7 +26,7 @@ function typerDemo(dispatch, index) {
     .continue("Let's get started.")
     .pause(1000)
     .back('all', 10)
-    .continue('<span class="lime">Typer</span> has <strong class="underline i">no dependencies</strong>.')
+    .continue('<span class="lime">Typer</span> has <strong class="u i">no dependencies</strong>.')
     .pause()
     .line('Slap it on your page and go.')
     .pause(1000)

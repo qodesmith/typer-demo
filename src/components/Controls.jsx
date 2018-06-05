@@ -5,7 +5,7 @@ import { demoItemChange, togglePlay, enableControls } from 'actions'
 import { wait } from 'helpers'
 
 
-const itemCls = 'item tc radius-0-5 pa3 pointer'
+const itemCls = 'item tc radius-0-5 pa2 pointer'
 const activeCls = `${itemCls} bg-lime black`
 const disabledCls = itemCls.replace('pointer', 'not-allowed white-30')
 const cntrlCls = 'pointer ba-1px control'
@@ -50,7 +50,7 @@ class Controls extends Component {
 
     // Start the demonstration.
     await wait(200)
-    this.props.prev(true, __PROD__ ? 1 : 2) // Ternary for development purposes only.
+    this.props.prev(true, __PROD__ ? 1 : 3) // Ternary for development purposes only.
   }
 
   render() {

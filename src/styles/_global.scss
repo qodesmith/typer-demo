@@ -24,6 +24,10 @@ body {
 
 .item {
   transition: background .2s, color .2s;
+
+  &:not(.bg-lime):hover {
+    @extend .white;
+  }
 }
 
 .controls-container {

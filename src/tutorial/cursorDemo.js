@@ -138,7 +138,7 @@ function cursorDemo(dispatch, index) {
     .continue('<span class="yellow">rgb(255, 0, 0)\'</span> })')
     .pause(1500)
     .back(18, 10)
-    .continue('<span class="yellow">hsl(0, 100%, 50%)\'</span>})')
+    .continue('<span class="yellow">hsl(0, 100%, 50%)\'</span> })')
     .pause(1500)
     .back(21, 10)
     .continue('<span class="yellow">#ff0000\'</span> })')
